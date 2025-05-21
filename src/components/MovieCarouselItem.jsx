@@ -1,10 +1,11 @@
 import { Play, Star } from "lucide-react";
 
 export const MovieCarouselItem = ({ movie }) => {
+  const imgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie.backdrop_path}`;
   return (
     <div className="relative">
       <img
-        src="/witch.jpg"
+        src={imgUrl}
         alt="head"
         className="md:relative w-screen md:h-[976px]"
       />

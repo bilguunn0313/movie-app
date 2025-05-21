@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
 
-export const MovieCard = () => {
+export const MovieCard = ({ upcomingMovie }) => {
   return (
     <div className="py-4">
       <div className="px-4">
@@ -19,7 +19,7 @@ export const MovieCard = () => {
             <p>6.9</p>
             <p className="text-[#71717a]">/10</p>
           </div>
-          <p className="px-1">Dear Santa</p>
+          <p className="px-1">{upcomingMovie?.title}</p>
         </div>
       </div>
     </div>

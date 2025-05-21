@@ -4,9 +4,11 @@ import { MovieCard } from "@/components/MovieCard";
 import { MovieCarousel } from "@/components/MovieCarousel";
 import { MovieCarouselItem } from "@/components/MovieCarouselItem";
 import { useEffect, useState } from "react";
+import { Upcoming } from "@/components/Upcoming";
 
 export default function Home() {
   const [nowPlayingMovie, setNowPlayingMovie] = useState([]);
+  const [upcomingMovie, setUpcomingMovie] = useState([]);
   const getNowPlayingMovies = async () => {
     try {
       const response = await fetch(
@@ -26,9 +28,29 @@ export default function Home() {
       console.log(error);
     }
   };
+  const getUpcoming = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/movie/upcoming?language=en-US&page=1`,
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN}`,
+          },
+        }
+      );
+      const upcomingMovies = await response.json();
+      setUpcomingMovie(upcomingMovie.results);
+      console.log("upcoming", upcomingMovies);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     getNowPlayingMovies();
+    getUpcoming();
   }, []);
   return (
     <div className="">
@@ -45,7 +67,8 @@ export default function Home() {
 
       <div className="flex">
         <MovieCard />
-        <MovieCard />
+        <Upcoming />
+        <Upcoming upcomingMovie={upcomingMovie} />
       </div>
       <div>
         <FooterSection />
