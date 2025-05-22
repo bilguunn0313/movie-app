@@ -22,7 +22,7 @@ export default function Home() {
         }
       );
       const movies = await response.json();
-      console.log(movies);
+      console.log("caro", movies);
       setNowPlayingMovie(movies.results);
     } catch (error) {
       console.log(error);
@@ -55,24 +55,12 @@ export default function Home() {
   return (
     <div className="">
       <HeaderSection />
-      <div>
-        <MovieCarousel nowPlayingMovie={nowPlayingMovie} />
-      </div>
-      <div className="flex justify-between px-6 py-8">
-        <p className="text-[24px] font-[600] text-[#09090b]">Upcoming</p>
-        <button className="font-[500] text-[14px] text-[#09090b]">
-          See more..
-        </button>
-      </div>
 
-      <div className="flex">
-        <MovieCard />
-        <Upcoming />
-        <Upcoming upcomingMovie={upcomingMovie} />
-      </div>
-      <div>
-        <FooterSection />
-      </div>
+      <MovieCarousel nowPlayingMovie={nowPlayingMovie} />
+
+      <Upcoming />
+
+      <FooterSection />
     </div>
   );
 }

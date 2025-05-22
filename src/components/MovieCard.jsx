@@ -1,25 +1,26 @@
 import { Star } from "lucide-react";
 
-export const MovieCard = ({ upcomingMovie }) => {
+export const MovieCard = ({ movie }) => {
+  const imageUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie.poster_path}`;
   return (
     <div className="py-4">
       <div className="px-4">
         <img
-          src="/sample.jpg"
+          src={imageUrl}
           alt="card"
-          className="w-[157px] h-[233.1px] md:w-[264px] md:h-[340px] rounded-md "
+          className="w-[157px] h-[233.1px] md:w-[229px] md:h-[340px] rounded-md "
         />
-        <div className=" bg-[#f4f4f5] px-2 py-1 w-[157px] h-[76px] rounded-md md:w-[264px] md:h-[95px]">
+        <div className=" bg-[#f4f4f5] px-2 py-1 max-w-[157px] h-[76px] rounded-md md:max-w-[229px] md:h-[95px]">
           <div className="flex gap-1">
             <Star
               color="rgba(253, 224, 71, 1)"
               fill="rgba(253, 224, 71, 1)"
               className="w-4 "
             />
-            <p>6.9</p>
+            <p>{movie.vote_average}</p>
             <p className="text-[#71717a]">/10</p>
           </div>
-          <p className="px-1">{upcomingMovie?.title}</p>
+          <p className="px-1">{movie?.title}</p>
         </div>
       </div>
     </div>

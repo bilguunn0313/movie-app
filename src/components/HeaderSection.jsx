@@ -2,15 +2,15 @@ import { Film, Moon, Search } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 export const HeaderSection = () => {
   return (
-    <div className="flex justify-between px-10">
-      <div className="flex gap-2 py-4 px-5 pt-5">
+    <div className="flex justify-between px-10 w-max-[1280px]">
+      <div className="flex gap-2 py-4 px-5 pt-6.5">
         <Film className="text-indigo-700" />
         <p className="text-indigo-700">Movie Z</p>
       </div>
       <div className="py-4 flex gap-4">
-        <div className="px-4 pl-6 flex border-1 gap-1 border-[#E4E4E7] rounded-lg shadow-lg border-none ">
-          <ChevronDown className="w-4 h-9 hidden sm:block" />
-          <button className="cursor-pointer hidden sm:block">Genre</button>
+        <div className="px-4 pl-6 hidden sm:flex border-1 gap-1 border-[#E4E4E7] rounded-lg shadow-lg border-none ">
+          <ChevronDown className="w-4 h-9" />
+          <button className="cursor-pointer ">Genre</button>
         </div>
         <div className="flex">
           <Search className="w-4 h-4 absolute top-7 right-295 text-[#71717A] " />

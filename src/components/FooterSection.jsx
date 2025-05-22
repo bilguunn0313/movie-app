@@ -9,7 +9,7 @@ export const FooterSection = () => {
           <p className="">Movie Z</p>
         </div>
         <div className="px-5 py-4">
-          <p className="">© 2024 Movie Z. All Rights Reserved.</p>
+          <p className="">© 2024 Movie Z All Rights Reserved.</p>
         </div>
 
         <div className="flex px-5">

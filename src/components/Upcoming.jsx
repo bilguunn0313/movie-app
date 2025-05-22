@@ -1,28 +1,31 @@
-import { Star } from "lucide-react";
+import { getUpcomingMovies } from "@/lib/api/getUpcomingMovies";
+import { useEffect, useState } from "react";
+import { MovieCard } from "./MovieCard";
+import { MoveRight } from "lucide-react";
 
-export const Upcoming = ({ movie }) => {
+export const Upcoming = () => {
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+
+  useEffect(() => {
+    const getUpcoming = async () => {
+      const response = await getUpcomingMovies();
+      setUpcomingMovies(response?.results);
+    };
+    getUpcoming();
+  }, []);
+
   return (
-    <div>
-      <div className="py-4">
-        <div className="px-4">
-          <img
-            src="/sample.jpg"
-            alt="card"
-            className="w-[157px] h-[233.1px] md:w-[264px] md:h-[340px] rounded-md "
-          />
-          <div className=" bg-[#f4f4f5] px-2 py-1 w-[157px] h-[76px] rounded-md md:w-[264px] md:h-[95px]">
-            <div className="flex gap-1">
-              <Star
-                color="rgba(253, 224, 71, 1)"
-                fill="rgba(253, 224, 71, 1)"
-                className="w-4 "
-              />
-              <p>"hello"</p>
-              <p className="text-[#71717a]">/10</p>
-            </div>
-            <p className="px-1">{movie?.title}</p>
-          </div>
-        </div>
+    <div className="px-20 py-10">
+      <div className="flex py-5 px-4 justify-between">
+        <p className="font-extrabold text-[24px]">Upcoming</p>
+        <p className="flex gap-3">
+          See More <MoveRight />
+        </p>
+      </div>
+      <div className="md:grid md:grid-cols-5 sm:grid-cols-2 sm:grid  ">
+        {upcomingMovies.map((movie) => {
+          return <MovieCard key={movie.id} movie={movie} />;
+        })}
       </div>
     </div>
   );

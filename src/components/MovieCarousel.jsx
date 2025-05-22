@@ -25,8 +25,8 @@ export const MovieCarousel = ({ nowPlayingMovie }) => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className="invisible lg:visible left-10 to-50%" />
+      <CarouselNext className="invisible lg:visible right-10 to-50%" />
     </Carousel>
   );
 };
