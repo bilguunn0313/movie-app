@@ -1,18 +1,21 @@
 import { Film, Moon, Search } from "lucide-react";
 import { ChevronDown } from "lucide-react";
-export const HeaderSection = () => {
+import Link from "next/link";
+export const HeaderSection = ({ id }) => {
   return (
-    <div className="flex justify-between px-10 w-max-[1280px]">
-      <div className="flex gap-2 py-4 px-5 pt-6.5">
-        <Film className="text-indigo-700" />
-        <p className="text-indigo-700">Movie Z</p>
-      </div>
+    <div className="flex justify-between  mx-auto lg:w-[1480px] w-screen ">
+      <Link href={`/`}>
+        <div className="flex gap-2 py-4 px-5 pt-6.5">
+          <Film className="text-indigo-700" />
+          <p className="text-indigo-700">Movie Z</p>
+        </div>
+      </Link>
       <div className="py-4 flex gap-4">
-        <div className="px-4 pl-6 hidden sm:flex border-1 gap-1 border-[#E4E4E7] rounded-lg shadow-lg border-none ">
+        <div className="px-4 pl-6 hidden md:flex border-1 gap-1 border-[#E4E4E7] rounded-lg shadow-lg border-none ">
           <ChevronDown className="w-4 h-9" />
           <button className="cursor-pointer ">Genre</button>
         </div>
-        <div className="flex">
+        <div className="hidden md:flex">
           <Search className="w-4 h-4 absolute top-7 right-295 text-[#71717A] " />
           <input
             type="text"
@@ -21,7 +24,10 @@ export const HeaderSection = () => {
           />
         </div>
       </div>
-      <div>
+      <div className="flex">
+        <button className="mx-2 border-8 shadow-lg border-transparent rounded-xl my-5 block lg:hidden ">
+          <Search className="w-4 h-4  " />
+        </button>
         <button className="mx-2 border-8 shadow-lg border-transparent rounded-xl my-5 ">
           <Moon className="w-4 h-4  " />
         </button>

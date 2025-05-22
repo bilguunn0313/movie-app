@@ -3,7 +3,7 @@ import { Film, Mail, Phone } from "lucide-react";
 export const FooterSection = () => {
   return (
     <div>
-      <div className="w-full h-[308px] bg-indigo-700 text-[#fafafa] justify-between">
+      <div className="w-screen h-[308px] bg-indigo-700 text-[#fafafa] justify-between flex">
         <div className="flex pt-10 px-5 gap-2">
           <Film />
           <p className="">Movie Z</p>

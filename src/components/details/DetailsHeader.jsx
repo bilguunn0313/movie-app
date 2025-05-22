@@ -1,17 +1,20 @@
 import { Star } from "lucide-react";
 
 export const DetailsHeader = ({ movie }) => {
+  const imgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie.poster_path}`;
+  const bgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie.backdrop_path}`;
   return (
-    <div className="pt-8 pb-4 justify-between flex ">
-      <div className="">
-        <h1 className="text-[24px] font-[600]">{movie.title}</h1>
-        <div className="flex">
-          <p>{movie.release_date} ·</p>
-          <p>PG ·</p>
-          <p>{movie.runtime}</p>
+    <div className="mx-auto lg:w-[1024px] md:w-[768px] sm:w-[640px] ">
+      <div className="pt-8 pb-4 justify-between flex px-5  ">
+        <div>
+          <h1 className="text-[24px] font-[600]">{movie.title}</h1>
+          <div className="flex">
+            <p>{movie.release_date} ·</p>
+            <p>PG ·</p>
+            <p>{movie.runtime}</p>
+          </div>
         </div>
-      </div>
-      <div>
+
         <div className="">
           <div className="flex">
             <Star
@@ -26,6 +29,19 @@ export const DetailsHeader = ({ movie }) => {
             </div>
           </div>
           <p className="text-[#71717a]">{movie.vote_count}</p>
+        </div>
+      </div>
+      <div>
+        <div className="flex gap-8 pb-8 pt-6">
+          <img
+            src={imgUrl}
+            className="w-[100px] h-[148px] lg:w-[290px] lg:h-[428px] hidden lg:flex rounded-2xl"
+          />
+          <img
+            src={bgUrl}
+            alt=""
+            className="lg:w-[760px] lg:h-[428px] rounded-2xl"
+          />
         </div>
       </div>
     </div>

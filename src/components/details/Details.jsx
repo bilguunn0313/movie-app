@@ -1,7 +1,8 @@
 import { FooterSection } from "../FooterSection";
 import { HeaderSection } from "../HeaderSection";
 import { DetailsHeader } from "./DetailsHeader";
-import { DetailsPic } from "./DetailsPic";
+import { DetailsGenre } from "./DetailsGenre";
+import { DetailsMidSection } from "./DetailsMidSection";
 
 export const Details = ({ movie }) => {
   console.log(movie);
@@ -9,8 +10,12 @@ export const Details = ({ movie }) => {
   return (
     <div>
       <HeaderSection />
+
       <DetailsHeader movie={movie} />
-      <DetailsPic />
+      {/* <DetailsGenre /> */}
+
+      <DetailsMidSection movie={movie} />
+
       <FooterSection />
     </div>
   );

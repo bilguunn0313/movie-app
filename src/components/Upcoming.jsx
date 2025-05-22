@@ -13,18 +13,19 @@ export const Upcoming = () => {
     };
     getUpcoming();
   }, []);
+  console.log("upcomingMovies", upcomingMovies);
 
   return (
-    <div className="px-20 py-10">
+    <div className="mx-auto max-w-[1480px]">
       <div className="flex py-5 px-4 justify-between">
         <p className="font-extrabold text-[24px]">Upcoming</p>
         <p className="flex gap-3">
-          See More <MoveRight />
+          See More <MoveRight className="w-4" />
         </p>
       </div>
-      <div className="md:grid md:grid-cols-5 sm:grid-cols-2 sm:grid  ">
+      <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
         {upcomingMovies.map((movie) => {
-          return <MovieCard key={movie.id} movie={movie} />;
+          return <MovieCard key={movie.id} movie={movie} id={movie.id} />;
         })}
       </div>
     </div>

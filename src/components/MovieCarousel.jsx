@@ -21,7 +21,7 @@ export const MovieCarousel = ({ nowPlayingMovie }) => {
       <CarouselContent>
         {nowPlayingMovie?.slice(0, 3).map((movie, index) => (
           <CarouselItem key={index}>
-            <MovieCarouselItem movie={movie} />
+            <MovieCarouselItem movie={movie} id={movie.id} />
           </CarouselItem>
         ))}
       </CarouselContent>
