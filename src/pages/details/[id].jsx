@@ -21,7 +21,7 @@ export default function Page() {
 
   return (
     <div>
-      <Details movie={movie} />
+      <Details movie={movie} id={movie.id} />
     </div>
   );
 }

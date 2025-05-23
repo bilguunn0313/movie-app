@@ -19,7 +19,7 @@ export const MovieCard = ({ movie, id }) => {
                 fill="rgba(253, 224, 71, 1)"
                 className="w-4 "
               />
-              <p>{movie.vote_average}</p>
+              <p>{movie.vote_average.toFixed(1)}</p>
               <p className="text-[#71717a]">/10</p>
             </div>
             <p className="px-1">{movie?.title}</p>
