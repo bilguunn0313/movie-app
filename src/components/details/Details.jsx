@@ -1,12 +1,12 @@
 import { FooterSection } from "../FooterSection";
 import { HeaderSection } from "../HeaderSection";
-import { DetailsHeader } from "./DetailsHeader";
+import { DetailsDirectors } from "./DetailsDirectors";
 import { DetailsGenre } from "./DetailsGenre";
+import { DetailsHeader } from "./DetailsHeader";
 import { DetailsMidSection } from "./DetailsMidSection";
+import { DetailsTrailer } from "./DetailsTrailer";
 
 export const Details = ({ movie }) => {
-  console.log(movie);
-
   return (
     <div>
       <HeaderSection />
@@ -15,7 +15,8 @@ export const Details = ({ movie }) => {
       {/* <DetailsGenre /> */}
 
       <DetailsMidSection movie={movie} />
-
+      <DetailsDirectors />
+      <DetailsTrailer videoId={movie.id} />
       <FooterSection />
     </div>
   );

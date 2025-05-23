@@ -1,17 +1,21 @@
 import { Star } from "lucide-react";
+import ReactPlayer from "react-player";
+import React from "react";
+import YouTube from "react-youtube";
 
 export const DetailsHeader = ({ movie }) => {
-  const imgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie.poster_path}`;
-  const bgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie.backdrop_path}`;
+  const imgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.poster_path}`;
+  const bgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.backdrop_path}`;
+  console.log(movie);
   return (
     <div className="mx-auto lg:w-[1024px] md:w-[768px] sm:w-[640px] ">
       <div className="pt-8 pb-4 justify-between flex px-5  ">
         <div>
-          <h1 className="text-[24px] font-[600]">{movie.title}</h1>
+          <h1 className="text-[24px] font-[600]">{movie?.title}</h1>
           <div className="flex">
-            <p>{movie.release_date} ·</p>
+            <p>{movie?.release_date} ·</p>
             <p>PG ·</p>
-            <p>{movie.runtime}</p>
+            <p>{movie?.runtime}</p>
           </div>
         </div>
 
@@ -24,11 +28,11 @@ export const DetailsHeader = ({ movie }) => {
             />
 
             <div className="flex">
-              <p className="font-[600]">{movie.vote_average}</p>
+              <p className="font-[600]">{movie?.vote_average}</p>
               <p className="text-[#71717a]">/10</p>
             </div>
           </div>
-          <p className="text-[#71717a]">{movie.vote_count}</p>
+          <p className="text-[#71717a]">{movie?.vote_count}</p>
         </div>
       </div>
       <div>

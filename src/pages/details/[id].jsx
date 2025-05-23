@@ -18,6 +18,7 @@ export default function Page() {
 
     getMovie();
   }, [movieId]);
+
   return (
     <div>
       <Details movie={movie} />

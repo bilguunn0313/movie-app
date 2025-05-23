@@ -11,7 +11,7 @@ export const MovieCarouselItem = ({ movie, id }) => {
           alt="head"
           className="lg:relative w-screen lg:h-[976px] "
         />
-        <div className=" lg:absolute top-70 left-20 lg:text-white lg:w-[340px]">
+        <div className=" lg:absolute top-70 left-20 lg:text-white lg:w-[340px] ">
           <div className="flex justify-between px-5 py-4 md:flex-col md:text-[12px]">
             <div>
               <p className="text-sm">Now playing:</p>
