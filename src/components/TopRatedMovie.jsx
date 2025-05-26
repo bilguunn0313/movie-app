@@ -13,7 +13,6 @@ export const TopRatedMovie = () => {
     };
     getTopRated();
   }, []);
-  console.log("topRated", topRated);
 
   return (
     <div className="mx-auto max-w-[1480px]">

@@ -13,7 +13,6 @@ export const PopularMovie = () => {
     };
     getPopular();
   }, []);
-  console.log("popular", popularMovies);
 
   return (
     <div className="mx-auto max-w-[1480px] ">

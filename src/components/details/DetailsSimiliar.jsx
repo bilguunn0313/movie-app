@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export const DetailsSimiliar = ({ movie, id }) => {
   const [similiar, setSimiliar] = useState([]);
+
   useEffect(() => {
     const getSimiliar = async () => {
       if (!id) return;
@@ -20,7 +21,6 @@ export const DetailsSimiliar = ({ movie, id }) => {
         );
         const data = await response.json();
         setSimiliar(data?.results);
-        console.log("similiar", data);
       } catch (error) {
         console.log(error);
       }

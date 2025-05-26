@@ -24,7 +24,7 @@ export default function Home() {
         }
       );
       const movies = await response.json();
-      console.log("nowplaying", movies);
+
       setNowPlayingMovie(movies.results);
     } catch (error) {
       console.log(error);

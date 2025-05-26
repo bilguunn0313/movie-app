@@ -13,7 +13,6 @@ export const Upcoming = () => {
     };
     getUpcoming();
   }, []);
-  console.log("upcomingMovies", upcomingMovies);
 
   return (
     <div className="mx-auto max-w-[1480px]">

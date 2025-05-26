@@ -24,12 +24,12 @@ export const DetailsDirectors = ({ id }) => {
         );
         setDirectors(directorList);
         const writerList = data?.crew?.filter(
-          (person) => person.job === "Writer"
+          (person) => person.department === "Writing"
         );
         setWriters(writerList);
 
         setCasts(data?.cast);
-        console.log(data);
+        console.log("data", data);
       } catch (error) {
         console.log(error);
       }
