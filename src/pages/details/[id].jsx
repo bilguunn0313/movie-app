@@ -25,3 +25,7 @@ export default function Page() {
     </div>
   );
 }
+
+// switch
+// pagination
+// hover card

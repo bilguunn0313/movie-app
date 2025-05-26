@@ -50,7 +50,7 @@ export const DetailsDirectors = ({ id }) => {
 
       <div className="flex gap-15 px-5 mx-auto lg:w-[1100px] md:w-[800px]">
         <h1 className="font-[600]">Writer</h1>
-        {writers.map((writer) => (
+        {writers.slice(0, 3).map((writer) => (
           <p key={writer.id}>{writer.name} ·</p>
         ))}
       </div>

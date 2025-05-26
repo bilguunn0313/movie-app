@@ -34,8 +34,6 @@ export const MovieTrailer = ({ movieId }) => {
     (video) => video.name === "Official Trailer"
   );
 
-  console.log({ movieTrailer });
-
   return (
     <div className="text-white">
       <Dialog>

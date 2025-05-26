@@ -7,6 +7,15 @@ import { useEffect, useState } from "react";
 import { Upcoming } from "@/components/Upcoming";
 import { PopularMovie } from "@/components/PopularMovie";
 import { TopRatedMovie } from "@/components/TopRatedMovie";
+import { HeaderGenre } from "@/components/HeaderGenre";
+
+import { Button } from "@/components/ui/button";
+
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 export default function Home() {
   const [nowPlayingMovie, setNowPlayingMovie] = useState([]);
@@ -57,9 +66,7 @@ export default function Home() {
   return (
     <div className="">
       <HeaderSection />
-
       <MovieCarousel nowPlayingMovie={nowPlayingMovie} />
-
       <Upcoming />
       <PopularMovie />
       <TopRatedMovie />
