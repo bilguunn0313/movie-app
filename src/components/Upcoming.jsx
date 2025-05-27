@@ -2,8 +2,9 @@ import { getUpcomingMovies } from "@/lib/api/getUpcomingMovies";
 import { useEffect, useState } from "react";
 import { MovieCard } from "./MovieCard";
 import { MoveRight } from "lucide-react";
+import Link from "next/link";
 
-export const Upcoming = () => {
+export const Upcoming = ({ categoryName }) => {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
 
   useEffect(() => {
@@ -18,9 +19,11 @@ export const Upcoming = () => {
     <div className="mx-auto max-w-[1480px]">
       <div className="flex py-5 px-4 justify-between">
         <p className="font-extrabold text-[24px]">Upcoming</p>
-        <p className="flex gap-3">
-          See More <MoveRight className="w-4" />
-        </p>
+        <Link href={`/category/Upcoming`}>
+          <p className="flex gap-3 cursor-pointer">
+            See More <MoveRight className="w-4 " />
+          </p>
+        </Link>
       </div>
       <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
         {upcomingMovies.map((movie) => {

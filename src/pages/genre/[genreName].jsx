@@ -1,22 +1,23 @@
 import { GenrePage } from "@/components/genre/GenrePage";
 import { getGenre } from "@/lib/api/getGenre";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function Page() {
   const router = useRouter();
-  const genreId = router.query.id;
+  const genreName = router.query.genreName;
   const [genre, setGenre] = useState({});
 
   useEffect(() => {
-    if (!genreId) return;
+    if (!genreName) return;
 
     const allGenre = async () => {
-      const data = await getGenre(genreId);
+      const data = await getGenre(genreName);
       setGenre(data);
     };
 
     allGenre();
-  }, [genreId]);
+  }, [genreName]);
 
-  return <div></div>;
+  return <div>Genre</div>;
 }
