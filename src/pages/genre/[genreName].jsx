@@ -19,5 +19,9 @@ export default function Page() {
     allGenre();
   }, [genreName]);
 
-  return <div>Genre</div>;
+  return (
+    <div>
+      <GenrePage />
+    </div>
+  );
 }

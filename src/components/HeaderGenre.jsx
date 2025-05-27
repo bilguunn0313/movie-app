@@ -3,7 +3,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -41,17 +41,27 @@ export const HeaderGenre = () => {
     <div className="">
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline">Open popover</Button>
+          <Button variant="outline">
+            <ChevronDown /> Genre
+          </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-full h-[200px]">
-          <div className="px-4  hidden md:flex border-1 gap-2 border-[#E4E4E7] rounded-lg shadow-lg border-none ">
+        <PopoverContent className="w-[700px] h-full">
+          <div className="px-2">
+            <h2 className="font-[600] text-[24px] ">Genres</h2>
+            <p className="font-[400] text-[16px] ">
+              See lists of movies by genre
+            </p>
+          </div>
+          <div className="border-1 my-4"></div>
+          <div className="hidden md:flex flex-wrap gap-2  ">
             {useGenre.map((genre) => (
               <Button
                 key={genre.id}
                 variant="outline"
-                className="rounded-full mx-2"
+                className="rounded-full mx-1 text-[12px] font-[600] cursor-pointer  "
               >
                 {genre.name}
+                <ChevronRight />
               </Button>
             ))}
           </div>

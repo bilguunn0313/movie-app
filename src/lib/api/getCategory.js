@@ -1,7 +1,7 @@
-export const getCategory = async () => {
+export const getCategory = async ({ Page = 1, categoryName }) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}movie/${categoryName}?language=en-US`,
+      `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}movie/${categoryName}?language=en-US${Page}`,
       {
         method: "GET",
         headers: {

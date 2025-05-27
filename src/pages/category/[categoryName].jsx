@@ -1,7 +1,4 @@
 import { HeaderSection } from "@/components/HeaderSection";
-import { PopularMovie } from "@/components/PopularMovie";
-import { TopRatedMovie } from "@/components/TopRatedMovie";
-import { Upcoming } from "@/components/Upcoming";
 import { getCategory } from "@/lib/api/getCategory";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -15,55 +12,69 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { Button } from "@/components/ui/button";
+import { CatUpcoming } from "@/components/CatUpcoming";
+import { FooterSection } from "@/components/FooterSection";
+import { CatPopular } from "@/components/CatPopular";
+import { CatTopRated } from "@/components/CatTopRated";
 
 export default function Page() {
   const router = useRouter();
   const categoryName = router.query.categoryName;
   const [category, setCategory] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     if (!categoryName) return;
 
     const allCategory = async () => {
-      const data = await getCategory(categoryName);
+      const data = await getCategory(categoryName, currentPage);
       setCategory(data);
     };
 
     allCategory();
-  }, [categoryName]);
+  }, [categoryName, currentPage]);
 
   return (
     <div>
       <HeaderSection />
-      {(categoryName === "Upcoming" && <Upcoming data={category} />) ||
-        (categoryName === "TopRatedMovie" && (
-          <TopRatedMovie data={category} />
-        )) ||
-        (categoryName === "PopularMovie" && <PopularMovie data={category} />)}
+      {(categoryName === "CatUpcoming" && <CatUpcoming data={category} />) ||
+        (categoryName === "CatTopRated" && <CatTopRated data={category} />) ||
+        (categoryName === "CatPopular" && <CatPopular data={category} />)}
       <Pagination>
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrevious href="#" />
+            <PaginationPrevious
+              href="#"
+              onClick={() => setCurrentPage(currentPage - 1)}
+            />
           </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#" isActive>
-              2
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
-          </PaginationItem>
+
+          {[1, 2, 3].map((pageNumber) => (
+            <PaginationItem key={pageNumber}>
+              <PaginationLink
+                href="#"
+                onClick={() => setCurrentPage(pageNumber)}
+              >
+                <Button variant={pageNumber === currentPage}>
+                  {pageNumber}
+                </Button>
+              </PaginationLink>
+            </PaginationItem>
+          ))}
           <PaginationItem>
             <PaginationEllipsis />
           </PaginationItem>
+
           <PaginationItem>
-            <PaginationNext href="#" />
+            <PaginationNext
+              href="#"
+              onClick={() => setCurrentPage(currentPage + 1)}
+            />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
+      <FooterSection />
     </div>
   );
 }

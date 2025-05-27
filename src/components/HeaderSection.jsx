@@ -15,10 +15,9 @@ export const HeaderSection = ({ id }) => {
         </div>
       </Link>
       <div className="py-4 flex gap-4">
-        <div className="px-4  hidden md:flex border-1 gap-2 border-[#E4E4E7] rounded-lg shadow-lg border-none  hover:bg-[#E4E4E7]/90 ">
-          <ChevronDown className="w-4 h-10" />
+        <Link href={`/genre/GenrePage`}>
           <HeaderGenre />
-        </div>
+        </Link>
         <div className="hidden md:flex">
           <Search className="w-4 h-4 absolute top-7 left-255 right-295 text-[#71717A] " />
           <input
