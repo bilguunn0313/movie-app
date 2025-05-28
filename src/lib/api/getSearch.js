@@ -1,7 +1,7 @@
-export const getSearch = async (movieId, page = 1) => {
+export const getSearch = async (query, page = 1) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}search/movie?query=${movieId}&language=en-US&page=${page}`,
+      `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}search/movie?query=${query}&language=en-US&page=${page}`,
       {
         method: "GET",
         headers: {

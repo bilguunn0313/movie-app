@@ -4,20 +4,9 @@ import Link from "next/link";
 import { HeaderGenre } from "./HeaderGenre";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { SearchInput } from "./SearchInput";
 
-import {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "@/components/ui/command";
-
-export const HeaderSection = ({ id }) => {
+export const HeaderSection = ({ query }) => {
   return (
     <div className="flex justify-between  mx-auto lg:w-[1480px] w-screen ">
       <Link href={`/`}>
@@ -30,21 +19,7 @@ export const HeaderSection = ({ id }) => {
         <HeaderGenre />
 
         <div className="hidden md:flex">
-          {/* <Search className="w-4 h-4 absolute top-7 left-255 right-295 text-[#71717A] " /> */}
-          {/* <input
-            type="text"
-            placeholder="Search..."
-            className="border-8 shadow-lg border-transparent rounded-xl md:pr-40 md:pl-6 relative"
-          /> */}
-          <Command>
-            <CommandInput placeholder="Type a command or search..." />
-            <CommandList>
-              <CommandEmpty>No results found.</CommandEmpty>
-              <CommandGroup heading={`See all results for movie`}>
-                <CommandItem></CommandItem>
-              </CommandGroup>
-            </CommandList>
-          </Command>
+          <SearchInput query={query} />
         </div>
       </div>
       <div className="flex">

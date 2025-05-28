@@ -1,6 +1,7 @@
 import { MoveRight } from "lucide-react";
 import { MovieCard } from "../MovieCard";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export const DetailsSimiliar = ({ movie, id }) => {
   const [similiar, setSimiliar] = useState([]);
@@ -36,9 +37,11 @@ export const DetailsSimiliar = ({ movie, id }) => {
         </p>
       </div>
       <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
-        {similiar.slice(0, 5).map((movie) => {
-          return <MovieCard key={movie.id} movie={movie} />;
-        })}
+        <Link href={`/details/${movie.id}`}>
+          {similiar.slice(0, 5).map((movie) => {
+            return <MovieCard key={movie.id} movie={movie} />;
+          })}
+        </Link>
       </div>
     </div>
   );
