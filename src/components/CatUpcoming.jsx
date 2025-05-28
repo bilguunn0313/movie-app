@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { FooterSection } from "./FooterSection";
-import { HeaderSection } from "./HeaderSection";
+
 import { MovieCard } from "./MovieCard";
 import { getUpcomingMovies } from "@/lib/api/getUpcomingMovies";
 

@@ -15,9 +15,8 @@ export const HeaderSection = ({ id }) => {
         </div>
       </Link>
       <div className="py-4 flex gap-4">
-        <Link href={`/genre/GenrePage`}>
-          <HeaderGenre />
-        </Link>
+        <HeaderGenre />
+
         <div className="hidden md:flex">
           <Search className="w-4 h-4 absolute top-7 left-255 right-295 text-[#71717A] " />
           <input

@@ -12,9 +12,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import Link from "next/link";
+import { getFilterGenre } from "@/lib/api/getFilterGenre";
 
 export const HeaderGenre = () => {
   const [useGenre, setUseGenre] = useState([]);
+  const [selectedGenreId, setSelectedGenreId] = useState("");
+  const [filterGenre, setFilterGenre] = useState({});
   useEffect(() => {
     const getGenre = async () => {
       try {
@@ -37,6 +41,15 @@ export const HeaderGenre = () => {
     };
     getGenre();
   }, []);
+
+  useEffect(() => {
+    const getOnFilter = async () => {
+      const response = await getFilterGenre(selectedGenreId);
+      setFilterGenre(response?.results);
+    };
+
+    getOnFilter();
+  }, [selectedGenreId]);
   return (
     <div className="">
       <Popover>
@@ -55,14 +68,16 @@ export const HeaderGenre = () => {
           <div className="border-1 my-4"></div>
           <div className="hidden md:flex flex-wrap gap-2  ">
             {useGenre.map((genre) => (
-              <Button
-                key={genre.id}
-                variant="outline"
-                className="rounded-full mx-1 text-[12px] font-[600] cursor-pointer  "
-              >
-                {genre.name}
-                <ChevronRight />
-              </Button>
+              <Link href={`/genre/${genre.id}`}>
+                <Button
+                  key={genre.id}
+                  variant="outline"
+                  className="rounded-full mx-1 text-[12px] font-[600] cursor-pointer  "
+                >
+                  {genre.name}
+                  <ChevronRight />
+                </Button>
+              </Link>
             ))}
           </div>
         </PopoverContent>

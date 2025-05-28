@@ -2,10 +2,20 @@ import { getGenre } from "@/lib/api/getGenre";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
+import { getFilterGenre } from "@/lib/api/getFilterGenre";
+import { MovieCard } from "../MovieCard";
 
 export const GenrePick = () => {
   const [showGenre, setShowGenre] = useState([]);
+  const [filterGenre, setFilterGenre] = useState({});
+  const [filterIds, setFilterIds] = useState("");
+  const [selectedGenreId, setSelectedGenreId] = useState("");
 
+  const toggleGenre = (id) => {
+    setSelectedGenreId((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
   useEffect(() => {
     const getLeftGenre = async () => {
       const response = await getGenre();
@@ -13,6 +23,16 @@ export const GenrePick = () => {
     };
     getLeftGenre();
   }, []);
+
+  useEffect(() => {
+    const getOnFilter = async () => {
+      const response = await getFilterGenre(selectedGenreId);
+      setFilterGenre(response);
+    };
+
+    getOnFilter();
+  }, [selectedGenreId]);
+  console.log(filterGenre.results);
   return (
     <div className="flex">
       <div className="ml-40">
@@ -27,12 +47,17 @@ export const GenrePick = () => {
         </div>
         <div>
           <div className=" w-[500px]  flex-wrap hidden md:flex gap-2 ">
-            {showGenre.map((genre) => (
+            {showGenre?.map((genre) => (
               <div className="py-2">
                 <Button
                   key={genre.id}
-                  variant="outline"
-                  className="rounded-full mx-2 text-[12px] font-[600] cursor-pointer   "
+                  variant={selectedGenreId === genre.id ? "default" : "outline"}
+                  className={`rounded-full mx-2 text-[12px] font-[600] cursor-pointer ${
+                    selectedGenreId === genre.id
+                      ? "bg-[#18181b] text-white"
+                      : ""
+                  }`}
+                  onClick={() => setSelectedGenreId(genre.id)}
                 >
                   {genre.name}
                   <ChevronRight />
@@ -43,6 +68,23 @@ export const GenrePick = () => {
         </div>
       </div>
       <div className="border-1 max-h-full mt-32 mx-5"></div>
+      <div className="">
+        <div className="mt-[130px] ml-">
+          <h1 className="font-[600] text-[20px] ">
+            {filterGenre?.total_results} titles in
+            {showGenre.slice(selectedGenreId).map((genre) => (
+              <span key={genre.id} onClick={genre.id}>
+                "{genre.name}"
+              </span>
+            ))}
+          </h1>
+          <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
+            {filterGenre?.results?.map((movie) => {
+              return <MovieCard key={movie.id} movie={movie} />;
+            })}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
