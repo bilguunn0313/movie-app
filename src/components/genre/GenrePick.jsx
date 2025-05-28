@@ -5,11 +5,11 @@ import { ChevronRight } from "lucide-react";
 import { getFilterGenre } from "@/lib/api/getFilterGenre";
 import { MovieCard } from "../MovieCard";
 
-export const GenrePick = () => {
+export const GenrePick = ({ genreIds }) => {
   const [showGenre, setShowGenre] = useState([]);
   const [filterGenre, setFilterGenre] = useState({});
   const [filterIds, setFilterIds] = useState("");
-  const [selectedGenreId, setSelectedGenreId] = useState("");
+  const [selectedGenreId, setSelectedGenreId] = useState([]);
 
   const toggleGenre = (id) => {
     setSelectedGenreId((prev) =>
@@ -25,12 +25,13 @@ export const GenrePick = () => {
   }, []);
 
   useEffect(() => {
-    const getOnFilter = async () => {
+    if (!selectedGenreId) return;
+    const getOnFilterLeft = async () => {
       const response = await getFilterGenre(selectedGenreId);
       setFilterGenre(response);
     };
 
-    getOnFilter();
+    getOnFilterLeft();
   }, [selectedGenreId]);
   console.log(filterGenre.results);
   return (
@@ -69,14 +70,14 @@ export const GenrePick = () => {
       </div>
       <div className="border-1 max-h-full mt-32 mx-5"></div>
       <div className="">
-        <div className="mt-[130px] ml-">
+        <div className="mt-[130px]">
           <h1 className="font-[600] text-[20px] ">
             {filterGenre?.total_results} titles in
-            {showGenre.slice(selectedGenreId).map((genre) => (
-              <span key={genre.id} onClick={genre.id}>
-                "{genre.name}"
-              </span>
-            ))}
+            {/* {showGenre
+              .find((genre) => selectedGenreId.includes(genre.id))
+              .map((genre) => (
+                <span key={genre.id}>{genre.name}</span>
+              ))} */}
           </h1>
           <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
             {filterGenre?.results?.map((movie) => {

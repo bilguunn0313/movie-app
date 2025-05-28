@@ -8,7 +8,7 @@ export default function Page() {
   const router = useRouter();
   const genreId = router.query.genreId;
   const [genre, setGenre] = useState({});
-
+  console.log(genreId);
   useEffect(() => {
     if (!genreId) return;
 

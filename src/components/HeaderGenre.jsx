@@ -15,7 +15,7 @@ import {
 import Link from "next/link";
 import { getFilterGenre } from "@/lib/api/getFilterGenre";
 
-export const HeaderGenre = () => {
+export const HeaderGenre = ({ genreIds }) => {
   const [useGenre, setUseGenre] = useState([]);
   const [selectedGenreId, setSelectedGenreId] = useState("");
   const [filterGenre, setFilterGenre] = useState({});
@@ -43,13 +43,14 @@ export const HeaderGenre = () => {
   }, []);
 
   useEffect(() => {
+    if (!genreIds) return;
     const getOnFilter = async () => {
-      const response = await getFilterGenre(selectedGenreId);
+      const response = await getFilterGenre(genreIds);
       setFilterGenre(response?.results);
     };
 
     getOnFilter();
-  }, [selectedGenreId]);
+  }, [genreIds]);
   return (
     <div className="">
       <Popover>
