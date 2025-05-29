@@ -9,27 +9,62 @@ import Link from "next/link";
 
 export const GenrePick = () => {
   const router = useRouter();
+  const { genreId, name } = router.query;
   const [showGenre, setShowGenre] = useState([]);
   const [filterGenre, setFilterGenre] = useState({});
-  const [selectedGenreId, setSelectedGenreId] = useState([]);
+  const [selectedGenreId, setSelectedGenreId] = useState({
+    ids: [],
+    names: [],
+  });
 
   useEffect(() => {
     const getLeftGenre = async () => {
       const response = await getGenre();
-      setShowGenre(response?.genres);
+      setShowGenre(response?.genres || []);
     };
     getLeftGenre();
   }, []);
 
   useEffect(() => {
-    if (!selectedGenreId) return;
+    if (genreId && name) {
+      const ids = genreId.split(",").map((id) => Number(id));
+      const names = name.split(", ");
+      setSelectedGenreId({ ids, names });
+    }
+  }, [genreId, name]);
+
+  useEffect(() => {
+    if (selectedGenreId.length === 0) return;
     const getOnFilterLeft = async () => {
-      const response = await getFilterGenre(selectedGenreId);
+      const response = await getFilterGenre(selectedGenreId.ids.join(","));
       setFilterGenre(response);
     };
 
     getOnFilterLeft();
   }, [selectedGenreId]);
+
+  const toggleGenre = (id, name) => {
+    setSelectedGenreId((prev) => {
+      const getSelected = prev.ids.includes(id);
+
+      const newIds = getSelected
+        ? prev.ids.filter((genreId) => genreId !== id)
+        : [...prev.ids, id];
+
+      const newNames = getSelected
+        ? prev.names.filter((genreName) => genreName !== name)
+        : [...prev.names, name];
+
+      router.push(
+        `/genre/${id}?genreId=${newIds.join(",")}&name=${newNames.join(", ")}`
+      );
+
+      return {
+        ids: newIds,
+        names: newNames,
+      };
+    });
+  };
 
   const selectGenre = (id) => {
     setSelectedGenreId([...selectedGenreId, id]);
@@ -54,11 +89,13 @@ export const GenrePick = () => {
               <div className="py-2">
                 <Button
                   key={genre.id}
-                  variant={selectGenre === genre.id ? "default" : "outline"}
-                  className={`rounded-full mx-2 text-[12px] font-[600] cursor-pointer ${
-                    selectGenre === genre.id ? "bg-[#18181b] text-white" : ""
+                  variant={"outline"}
+                  className={`flex rounded-full mx-2 text-[12px] font-[600] cursor-pointer hover:bg-gray-300  ${
+                    selectedGenreId.ids.includes(genre.id)
+                      ? "bg-[#18181b] text-white"
+                      : "bg-white text-black"
                   }`}
-                  onClick={() => selectGenre(genre.id)}
+                  onClick={() => toggleGenre(genre.id, genre.name)}
                 >
                   {genre.name}
                   <ChevronRight />
@@ -71,9 +108,9 @@ export const GenrePick = () => {
       <div className="border-1 max-h-full mt-32 mx-5"></div>
       <div className="">
         <div className="mt-[130px]">
-          <h1 className="font-[600] text-[20px] ">
-            {filterGenre?.total_results} titles in
-            <Button>""</Button>
+          <h1 className="font-[600] text-[20px] flex">
+            <p> {filterGenre?.total_results} titles in</p>
+            <p> "{selectedGenreId.names}"</p>
           </h1>
           <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
             {filterGenre?.results?.map((movie) => {
