@@ -27,7 +27,7 @@ export default function Page() {
 
   return (
     <div>
-      <GenrePage genre={genre} />
+      <GenrePage genre={genre} genreId={genreId} />
     </div>
   );
 }

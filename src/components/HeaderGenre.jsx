@@ -1,8 +1,3 @@
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -14,8 +9,11 @@ import {
 } from "@/components/ui/popover";
 import Link from "next/link";
 import { getFilterGenre } from "@/lib/api/getFilterGenre";
+import { useRouter } from "next/router";
 
 export const HeaderGenre = ({ genreIds }) => {
+  const router = useRouter();
+
   const [useGenre, setUseGenre] = useState([]);
   const [selectedGenreId, setSelectedGenreId] = useState("");
   const [filterGenre, setFilterGenre] = useState({});
@@ -41,6 +39,10 @@ export const HeaderGenre = ({ genreIds }) => {
     };
     getGenre();
   }, []);
+  const selectGenre = (id) => {
+    setSelectedGenreId(id);
+    router.push(`genre/${id}`);
+  };
 
   useEffect(() => {
     if (!genreIds) return;

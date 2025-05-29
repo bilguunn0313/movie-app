@@ -20,14 +20,18 @@ export const Upcoming = ({ categoryName }) => {
       <div className="flex py-5 px-4 justify-between">
         <p className="font-extrabold text-[24px]">Upcoming</p>
         <Link href={`/category/CatUpcoming`}>
-          <p className="flex gap-3 cursor-pointer">
+          <p className="flex gap-3 cursor-pointer text-gray-500 hover:text-blue-700 transition-colors duration-200 ">
             See More <MoveRight className="w-4 " />
           </p>
         </Link>
       </div>
       <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
         {upcomingMovies.slice(0, 10).map((movie) => {
-          return <MovieCard key={movie.id} movie={movie} id={movie.id} />;
+          return (
+            <Link href={`/details/${movie.id}`}>
+              <MovieCard key={movie.id} movie={movie} id={movie.id} />
+            </Link>
+          );
         })}
       </div>
     </div>

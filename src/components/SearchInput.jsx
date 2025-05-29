@@ -1,12 +1,12 @@
 import { getSearch } from "@/lib/api/getSearch";
+import { ArrowRight, ChevronRight, Star } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export const SearchInput = () => {
+export const SearchInput = ({ movie, queryId }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  const posterUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}`;
 
   useEffect(() => {
     const getDelay = setTimeout(() => {
@@ -23,12 +23,13 @@ export const SearchInput = () => {
           setLoading(false);
         }
       };
+
       fetchSearch();
     }, 500);
 
     return () => clearTimeout(getDelay);
   }, [query]);
-
+  console.log(results);
   return (
     <div>
       {/* <Search className="w-4 h-4 absolute top-7 left-255 right-295 text-[#71717A] " /> */}
@@ -42,23 +43,56 @@ export const SearchInput = () => {
 
       {loading && <p>Searching</p>}
 
-      {!loading && results.length > 0 && (
-        <div className="">
-          {results.map((movie) => (
-            <div
-              key={movie.id}
-              className="border rounded text-sm cursor-pointer"
-            >
-              <button>
-                <img src={posterUrl.movie?.backdrop_path} alt="" />{" "}
-                <p>{movie.title}</p>
-              </button>
-            </div>
-          ))}
+      {!loading && results.length > 2 && (
+        <div className="absolute z-10 bg-white border rounded-xl  ">
+          {results.slice(0, 6).map((movie) => {
+            const posterUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.poster_path} `;
+            return (
+              <div key={movie.id} className=" text-sm mx-4 my-2   ">
+                <button className=" flex max-w-[577px] gap-4 ">
+                  <Link href={`/details/${movie.id}`}>
+                    <img
+                      src={posterUrl}
+                      className="w-[67px] h-[100px] rounded-xl cursor-pointer"
+                    />
+                  </Link>
+                  <div className="w-[577px]">
+                    <Link href={`/details/${movie.id}`}>
+                      <p className="text-[20px] font-[600] flex cursor-pointer">
+                        {movie.title}
+                      </p>
+                    </Link>
+                    <div className="flex">
+                      <Star
+                        color="rgba(253, 224, 71, 1)"
+                        fill="rgba(253, 224, 71, 1)"
+                        className="w-4"
+                      />
+
+                      <p className="font-[600]">
+                        {movie.vote_average.toFixed(1)}
+                      </p>
+                      <p className="text-[#71717a]">/10</p>
+                    </div>
+                    <div className="flex justify-between py-3">
+                      <p>{movie.release_date}</p>
+                      <Link href={`/details/${movie.id}`}>
+                        <div className="flex cursor-pointer text-gray-700 hover:text-blue-500 transition-colors duration-150">
+                          <p className="text-[14px] font-[500] ">See more</p>
+                          <ArrowRight className="w-4 h-5" />
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
+                </button>
+                <div className="border-1 my-2"></div>
+              </div>
+            );
+          })}
         </div>
       )}
 
-      {!loading && query && results.length === 0 && <p>Not found</p>}
+      {!loading && query && results.length === 0 && <p>No results found</p>}
     </div>
   );
 };

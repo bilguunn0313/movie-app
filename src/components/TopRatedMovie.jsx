@@ -27,7 +27,11 @@ export const TopRatedMovie = () => {
       </div>
       <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 ">
         {topRated.slice(0, 10).map((movie) => {
-          return <MovieCard key={movie.id} movie={movie} id={movie.id} />;
+          return (
+            <Link href={`/details/${movie.id}`}>
+              <MovieCard key={movie.id} movie={movie} id={movie.id} />;
+            </Link>
+          );
         })}
       </div>
     </div>

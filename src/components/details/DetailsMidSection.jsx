@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "../ui/button";
 
 export const DetailsMidSection = ({ movie }) => {
@@ -14,13 +15,15 @@ export const DetailsMidSection = ({ movie }) => {
       <div className="mx-auto  pb-10 lg:w-[1100px] md:w-[800px]">
         <div className="pb-5 w-[301px] md:w-[800px]">
           {movie.genres?.map((genre) => (
-            <Button
-              key={genre.id}
-              variant="outline"
-              className="rounded-full mx-2"
-            >
-              {genre.name}
-            </Button>
+            <Link href={`/genre/${genre.id}`}>
+              <Button
+                key={genre.id}
+                variant="outline"
+                className="rounded-full mx-2"
+              >
+                {genre.name}
+              </Button>
+            </Link>
           ))}
         </div>
         <div className="w-[228px] h-full lg:w-[1100px] md:w-[800px] mx-10 md:mx-2">

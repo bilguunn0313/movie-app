@@ -10,7 +10,9 @@ export const getCategory = async ({ Page = 1, categoryName }) => {
         },
       }
     );
-    return await response.json();
+    const data = await response.json();
+    console.log("category", data);
+    return data;
   } catch (error) {
     console.log(error);
   }

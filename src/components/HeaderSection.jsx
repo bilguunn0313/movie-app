@@ -32,9 +32,6 @@ export const HeaderSection = ({ query }) => {
         <div className="flex items-center space-x-2">
           <Switch id="airplane-mode" />
           <Label htmlFor="airplane-mode">Dark Mode</Label>
-          <Link href={`/search/SearchPage`}>
-            <button>search</button>
-          </Link>
         </div>
       </div>
     </div>

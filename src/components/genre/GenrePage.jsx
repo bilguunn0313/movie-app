@@ -2,7 +2,7 @@ import { FooterSection } from "../FooterSection";
 import { HeaderSection } from "../HeaderSection";
 import { GenrePick } from "./GenrePick";
 
-export const GenrePage = ({ genreIds }) => {
+export const GenrePage = ({ genreIds, genreId }) => {
   return (
     <div>
       <HeaderSection />

@@ -17,6 +17,7 @@ export const SearchPage = () => {
     <div>
       <HeaderSection />
       <SearchResults />
+
       <Pagination>
         <PaginationContent>
           <PaginationItem>
@@ -41,6 +42,7 @@ export const SearchPage = () => {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
+
       <FooterSection />
     </div>
   );

@@ -46,7 +46,9 @@ export default function Page() {
           <PaginationItem>
             <PaginationPrevious
               href="#"
-              onClick={() => setCurrentPage(currentPage - 1)}
+              onClick={() => {
+                if (currentPage > 1) setCurrentPage(currentPage - 1);
+              }}
             />
           </PaginationItem>
 
@@ -56,7 +58,12 @@ export default function Page() {
                 href="#"
                 onClick={() => setCurrentPage(pageNumber)}
               >
-                <Button variant={pageNumber === currentPage}>
+                <Button
+                  variant={pageNumber === currentPage ? "default" : "outline"}
+                  className={
+                    pageNumber === currentPage ? "bg-blue-600 text-white" : ""
+                  }
+                >
                   {pageNumber}
                 </Button>
               </PaginationLink>
@@ -69,7 +76,11 @@ export default function Page() {
           <PaginationItem>
             <PaginationNext
               href="#"
-              onClick={() => setCurrentPage(currentPage + 1)}
+              onClick={() => {
+                if (currentPage < category.total_pages) {
+                  setCurrentPage(currentPage + 1);
+                }
+              }}
             />
           </PaginationItem>
         </PaginationContent>

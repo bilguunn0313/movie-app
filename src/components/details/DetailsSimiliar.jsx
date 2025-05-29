@@ -37,11 +37,13 @@ export const DetailsSimiliar = ({ movie, id }) => {
         </p>
       </div>
       <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
-        <Link href={`/details/${movie.id}`}>
-          {similiar.slice(0, 5).map((movie) => {
-            return <MovieCard key={movie.id} movie={movie} />;
-          })}
-        </Link>
+        {similiar.slice(0, 5).map((movie) => {
+          return (
+            <Link href={`/details/${movie.id}`}>
+              <MovieCard key={movie.id} movie={movie} id={movie.id} />
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
