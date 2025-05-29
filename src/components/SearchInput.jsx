@@ -1,12 +1,22 @@
 import { getSearch } from "@/lib/api/getSearch";
 import { ArrowRight, ChevronRight, Star } from "lucide-react";
 import Link from "next/link";
+import { Router, useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-export const SearchInput = ({ movie, queryId }) => {
+export const SearchInput = ({ movie }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState("");
+  const router = useRouter();
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      setValue(event.target.event);
+      router.push(`/search/${query}`);
+    }
+  };
 
   useEffect(() => {
     const getDelay = setTimeout(() => {
@@ -29,21 +39,24 @@ export const SearchInput = ({ movie, queryId }) => {
 
     return () => clearTimeout(getDelay);
   }, [query]);
+
   console.log(results);
   return (
     <div>
       {/* <Search className="w-4 h-4 absolute top-7 left-255 right-295 text-[#71717A] " /> */}
+
       <input
         type="text"
         placeholder="Search..."
         value={query}
+        onKeyDown={handleKeyDown}
         onChange={(e) => setQuery(e.target.value)}
         className="border-8 shadow-lg border-transparent rounded-xl md:pr-40 md:pl-6 relative"
       />
 
       {loading && <p>Searching</p>}
 
-      {!loading && results.length > 2 && (
+      {!loading && results.length > 4 && (
         <div className="absolute z-10 bg-white border rounded-xl  ">
           {results.slice(0, 6).map((movie) => {
             const posterUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.poster_path} `;

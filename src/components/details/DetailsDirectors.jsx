@@ -46,7 +46,7 @@ export const DetailsDirectors = ({ id }) => {
           </p>
         ))}
       </div>
-      <div className="border-1 my-5 w-[1080px] mx-auto"></div>
+      <div className="border-1 my-5 md:max-w-[1080px] mx-auto sm:max-w-[380px]"></div>
 
       <div className="flex gap-15 px-5 mx-auto lg:w-[1100px] md:w-[800px]">
         <h1 className="font-[600]">Writer</h1>
@@ -54,14 +54,15 @@ export const DetailsDirectors = ({ id }) => {
           <p key={writer.id}>{writer.name} ·</p>
         ))}
       </div>
-      <div className="border-1 my-5 mx-auto w-[1080px]"></div>
+      <div className="border-1 my-5 mx-auto md:max-w-[1080px] sm:max-w-[380px]"></div>
+
       <div className="flex gap-16 px-5 mx-auto lg:w-[1100px] md:w-[800px]">
         <h1 className="font-[600]">Stars</h1>
         {casts.slice(0, 3).map((actor) => (
           <p key={actor.id}>{actor.name} ·</p>
         ))}
       </div>
-      <div className="border-1 my-5 mx-auto w-[1080px]"></div>
+      <div className="border-1 my-5 mx-auto md:max-w-[1080px] sm:min-w-[380px]"></div>
     </div>
   );
 };

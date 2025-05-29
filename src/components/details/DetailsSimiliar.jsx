@@ -29,18 +29,25 @@ export const DetailsSimiliar = ({ movie, id }) => {
     getSimiliar();
   }, [id]);
   return (
-    <div className="mx-auto max-w-[1280px] py-5">
+    <div className="mx-auto max-w-[1080px] py-5">
       <div className="flex py-5 px-4 justify-between">
         <p className="font-extrabold text-[24px]">More like this</p>
-        <p className="flex gap-3">
-          See More <MoveRight className="w-4" />
-        </p>
+        <Link href={`/category/CatSimiliar`}>
+          <p className="flex gap-3 text-gray-500 hover:text-blue-700 transition-colors duration:200 cursor-pointer ">
+            See More <MoveRight className="w-4" />
+          </p>
+        </Link>
       </div>
       <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
         {similiar.slice(0, 5).map((movie) => {
           return (
             <Link href={`/details/${movie.id}`}>
-              <MovieCard key={movie.id} movie={movie} id={movie.id} />
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                id={movie.id}
+                className="w-[150px]"
+              />
             </Link>
           );
         })}

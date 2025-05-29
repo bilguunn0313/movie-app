@@ -5,7 +5,7 @@ export const MovieCard = ({ movie, id }) => {
   const imageUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.poster_path}`;
   return (
     <div className="py-4">
-      <div className="px-4">
+      <div className="mx-10 sm:mx-auto lg:max-w-[1080px] sm:w-[640px]">
         <img
           src={imageUrl}
           alt="card"

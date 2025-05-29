@@ -17,6 +17,7 @@ import { CatUpcoming } from "@/components/CatUpcoming";
 import { FooterSection } from "@/components/FooterSection";
 import { CatPopular } from "@/components/CatPopular";
 import { CatTopRated } from "@/components/CatTopRated";
+import { CatSimiliar } from "@/components/CatSimiliar";
 
 export default function Page() {
   const router = useRouter();
@@ -29,6 +30,7 @@ export default function Page() {
 
     const allCategory = async () => {
       const data = await getCategory(categoryName, currentPage);
+      console.log("category", data);
       setCategory(data);
     };
 
@@ -40,12 +42,12 @@ export default function Page() {
       <HeaderSection />
       {(categoryName === "CatUpcoming" && <CatUpcoming data={category} />) ||
         (categoryName === "CatTopRated" && <CatTopRated data={category} />) ||
-        (categoryName === "CatPopular" && <CatPopular data={category} />)}
+        (categoryName === "CatPopular" && <CatPopular data={category} />) ||
+        (categoryName === "CatSimiliar" && <CatSimiliar data={category} />)}
       <Pagination>
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
-              href="#"
               onClick={() => {
                 if (currentPage > 1) setCurrentPage(currentPage - 1);
               }}
@@ -54,10 +56,7 @@ export default function Page() {
 
           {[1, 2, 3].map((pageNumber) => (
             <PaginationItem key={pageNumber}>
-              <PaginationLink
-                href="#"
-                onClick={() => setCurrentPage(pageNumber)}
-              >
+              <PaginationLink onClick={() => setCurrentPage(pageNumber)}>
                 <Button
                   variant={pageNumber === currentPage ? "default" : "outline"}
                   className={
@@ -75,7 +74,6 @@ export default function Page() {
 
           <PaginationItem>
             <PaginationNext
-              href="#"
               onClick={() => {
                 if (currentPage < category.total_pages) {
                   setCurrentPage(currentPage + 1);

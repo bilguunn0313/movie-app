@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import { MovieCard } from "../MovieCard";
-import { getUpcomingMovies } from "@/lib/api/getUpcomingMovies";
 import { getGenre } from "@/lib/api/getGenre";
 import { Button } from "../ui/button";
 import { ChevronRight } from "lucide-react";
+import { getSearch } from "@/lib/api/getSearch";
 
 export const SearchResults = () => {
-  const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const [foundMovie, setFoundMovie] = useState([]);
   const [showGenre, setShowGenre] = useState([]);
   const [selectedGenreId, setSelectedGenreId] = useState([]);
   useEffect(() => {
-    const getUpcoming = async () => {
-      const response = await getUpcomingMovies();
-      setUpcomingMovies(response?.results);
+    if (!selectedGenreId) return;
+    const getFoundMovie = async () => {
+      const response = await getSearch(selectedGenreId);
+      console.log("found movie", response);
+      setFoundMovie(response);
     };
-    getUpcoming();
+    getFoundMovie();
   }, []);
 
   useEffect(() => {
@@ -31,10 +33,10 @@ export const SearchResults = () => {
           Search Results
         </h1>
         <div>
-          <h1>5 Results for Wicked</h1>
+          <h1>{foundMovie?.total_results}</h1>
           <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
-            {upcomingMovies.slice(0, 10).map((movie) => {
-              return <MovieCard key={movie.id} movie={movie} id={movie.id} />;
+            {foundMovie?.results?.map((movie) => {
+              return <MovieCard key={movie.id} movie={movie} />;
             })}
           </div>
         </div>

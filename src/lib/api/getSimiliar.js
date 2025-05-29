@@ -1,7 +1,7 @@
-export const getCategory = async ({ Page = 1, movieId }) => {
+export const getSimiliar = async () => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}movie/${movieId}?language=en-US&page=${Page}`,
+      `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/movie/${id}/similar?language=en-US&page=1`,
       {
         method: "GET",
         headers: {
@@ -10,9 +10,7 @@ export const getCategory = async ({ Page = 1, movieId }) => {
         },
       }
     );
-    const data = await response.json();
-    console.log("category", data);
-    return data;
+    return await response.json();
   } catch (error) {
     console.log(error);
   }

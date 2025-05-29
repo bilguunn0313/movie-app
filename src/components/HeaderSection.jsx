@@ -8,7 +8,7 @@ import { SearchInput } from "./SearchInput";
 
 export const HeaderSection = ({ query }) => {
   return (
-    <div className="flex justify-between  mx-auto lg:w-[1480px] w-screen ">
+    <div className="flex justify-between  mx-auto lg:w-[1480px] sm:w-screen ">
       <Link href={`/`}>
         <div className="flex gap-2 py-4 px-5 pt-6.5">
           <Film className="text-indigo-700" />

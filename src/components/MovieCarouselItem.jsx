@@ -35,8 +35,9 @@ export const MovieCarouselItem = ({ movie, id }) => {
         <div className="px-5 text-[12px] ">
           <p>{movie.overview}</p>
         </div>
-
-        <MovieTrailer movieId={id} />
+        <div className="mx-5 py-3">
+          <MovieTrailer movieId={id} />
+        </div>
       </div>
     </div>
   );

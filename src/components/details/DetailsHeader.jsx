@@ -6,7 +6,7 @@ export const DetailsHeader = ({ movie }) => {
   const bgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.backdrop_path}`;
 
   return (
-    <div className="mx-auto lg:w-[1024px] md:w-[768px] sm:w-[640px] ">
+    <div className="mx-auto lg:w-[1080px] md:w-[768px] sm:w-[640px] ">
       <div className="pt-8 pb-4 justify-between flex px-5  ">
         <div>
           <h1 className="text-[24px] font-[600]">{movie?.title}</h1>
@@ -45,9 +45,9 @@ export const DetailsHeader = ({ movie }) => {
             <img
               src={bgUrl}
               alt=""
-              className="lg:w-[760px] lg:h-[428px] rounded-2xl relative opacity-90 "
+              className="lg:w-[762px] lg:h-[428px] rounded-2xl relative opacity-90 "
             />
-            <div className=" flex absolute top-87 p-[20px]">
+            <div className=" flex absolute md:top-87 p-[20px]  ">
               <MovieTrailer movieId={movie.id} />
             </div>
           </div>

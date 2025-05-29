@@ -8,7 +8,7 @@ import { DetailsSimiliar } from "./DetailsSimiliar";
 
 export const Details = ({ movie, id }) => {
   return (
-    <div>
+    <div className="">
       <HeaderSection />
       <DetailsHeader movie={movie} id={movie.id} />
 
