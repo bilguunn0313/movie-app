@@ -1,4 +1,4 @@
-export const getSimiliar = async () => {
+export const getSimiliar = async (id) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/movie/${id}/similar?language=en-US&page=1`,

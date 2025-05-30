@@ -5,12 +5,12 @@ import { MovieCard } from "./MovieCard";
 import Link from "next/link";
 import { getSimiliar } from "@/lib/api/getSimiliar";
 
-export const CatSimiliar = () => {
+export const CatSimiliar = ({ id }) => {
   const [catSimiliar, setCatSimiliar] = useState([]);
 
   useEffect(() => {
     const getCatSimiliar = async () => {
-      const response = await getSimiliar();
+      const response = await getSimiliar(id);
       setCatSimiliar(response?.results);
     };
     getCatSimiliar();

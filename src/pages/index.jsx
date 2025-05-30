@@ -1,21 +1,10 @@
 import { FooterSection } from "@/components/FooterSection";
 import { HeaderSection } from "@/components/HeaderSection";
-import { MovieCard } from "@/components/MovieCard";
 import { MovieCarousel } from "@/components/MovieCarousel";
-import { MovieCarouselItem } from "@/components/MovieCarouselItem";
-import { useEffect, useState } from "react";
-import { Upcoming } from "@/components/Upcoming";
 import { PopularMovie } from "@/components/PopularMovie";
 import { TopRatedMovie } from "@/components/TopRatedMovie";
-import { HeaderGenre } from "@/components/HeaderGenre";
-
-import { Button } from "@/components/ui/button";
-
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Upcoming } from "@/components/Upcoming";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [nowPlayingMovie, setNowPlayingMovie] = useState([]);
@@ -70,7 +59,7 @@ export default function Home() {
       <Upcoming />
       <PopularMovie />
       <TopRatedMovie />
-      <FooterSection />
+      {/* <FooterSection /> */}
     </div>
   );
 }

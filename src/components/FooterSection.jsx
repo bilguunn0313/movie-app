@@ -3,14 +3,14 @@ import { Film, Mail, Phone } from "lucide-react";
 export const FooterSection = () => {
   return (
     <div>
-      <div className="w-screen h-[308px] bg-indigo-700 text-[#fafafa] justify-between flex">
-        <div className="flex pt-10 px-5 gap-2">
+      <div className=" h-[308px] bg-indigo-700 text-[#fafafa] justify-between flex">
+        {/* <div className="flex pt-10 gap-2">
           <Film />
           <p className="">Movie Z</p>
         </div>
         <div className="px-5 py-4">
           <p className="">© 2024 Movie Z All Rights Reserved.</p>
-        </div>
+        </div> */}
 
         <div className="flex px-5">
           <div>

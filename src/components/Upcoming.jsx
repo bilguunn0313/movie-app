@@ -4,7 +4,7 @@ import { MovieCard } from "./MovieCard";
 import { MoveRight } from "lucide-react";
 import Link from "next/link";
 
-export const Upcoming = ({ categoryName }) => {
+export const Upcoming = () => {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
 
   useEffect(() => {

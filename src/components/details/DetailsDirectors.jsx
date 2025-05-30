@@ -38,28 +38,32 @@ export const DetailsDirectors = ({ id }) => {
   }, [id]);
   return (
     <div className="">
-      <div className="flex gap-12 px-5 mx-auto lg:w-[1100px] md:w-[800px] ">
-        <h1 className="font-[600]">Director</h1>
+      <div className="flex md:gap-12 px-5 mx-auto lg:w-[1100px] md:w-[800px] ">
+        <h1 className="font-[600]">Director:</h1>
         {directors.map((director) => (
-          <p key={director.id} className="">
-            {director.name}
+          <p key={director.id} className="pl-4">
+            "{director.name}"
           </p>
         ))}
       </div>
       <div className="border-1 my-5 md:max-w-[1080px] mx-auto sm:max-w-[380px]"></div>
 
-      <div className="flex gap-15 px-5 mx-auto lg:w-[1100px] md:w-[800px]">
-        <h1 className="font-[600]">Writer</h1>
+      <div className="flex md:gap-15   mx-auto lg:w-[1100px] md:w-[800px]">
+        <h1 className="font-[600] pl-5">Writer:</h1>
         {writers.slice(0, 3).map((writer) => (
-          <p key={writer.id}>{writer.name} ·</p>
+          <p key={writer.id} className="flex pl-5">
+            "{writer.name}"
+          </p>
         ))}
       </div>
       <div className="border-1 my-5 mx-auto md:max-w-[1080px] sm:max-w-[380px]"></div>
 
-      <div className="flex gap-16 px-5 mx-auto lg:w-[1100px] md:w-[800px]">
-        <h1 className="font-[600]">Stars</h1>
+      <div className="flex md:gap-16  mx-auto lg:w-[1100px] md:w-[800px]">
+        <h1 className="font-[600] pl-5">Stars:</h1>
         {casts.slice(0, 3).map((actor) => (
-          <p key={actor.id}>{actor.name} ·</p>
+          <p key={actor.id} className="pl-5 flex ">
+            "{actor.name}"
+          </p>
         ))}
       </div>
       <div className="border-1 my-5 mx-auto md:max-w-[1080px] sm:min-w-[380px]"></div>

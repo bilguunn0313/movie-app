@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Router, useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-export const SearchInput = ({ movie }) => {
+export const SearchInput = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -35,7 +35,7 @@ export const SearchInput = ({ movie }) => {
       };
 
       fetchSearch();
-    }, 500);
+    }, 600);
 
     return () => clearTimeout(getDelay);
   }, [query]);
@@ -51,13 +51,13 @@ export const SearchInput = ({ movie }) => {
         value={query}
         onKeyDown={handleKeyDown}
         onChange={(e) => setQuery(e.target.value)}
-        className="border-8 shadow-lg border-transparent rounded-xl md:pr-40 md:pl-6 relative"
+        className="border-8 shadow-lg border-transparent rounded-xl md:pr-40 md:pl-6 relative sm:text-[14px]"
       />
 
       {loading && <p>Searching</p>}
 
       {!loading && results.length > 4 && (
-        <div className="absolute z-10 bg-white border rounded-xl  ">
+        <div className="absolute z-10 bg-white border rounded-xl sm:w-[600px] w-[100px] ">
           {results.slice(0, 6).map((movie) => {
             const posterUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.poster_path} `;
             return (

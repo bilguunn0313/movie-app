@@ -26,14 +26,6 @@ export const GenrePick = () => {
   }, []);
 
   useEffect(() => {
-    if (genreId && name) {
-      const ids = genreId.split(",").map((id) => Number(id));
-      const names = name.split(", ");
-      setSelectedGenreId({ ids, names });
-    }
-  }, [genreId, name]);
-
-  useEffect(() => {
     if (selectedGenreId.length === 0) return;
     const getOnFilterLeft = async () => {
       const response = await getFilterGenre(selectedGenreId.ids.join(","));
@@ -110,7 +102,7 @@ export const GenrePick = () => {
         <div className="mt-[130px]">
           <h1 className="font-[600] text-[20px] flex">
             <p> {filterGenre?.total_results} titles in</p>
-            <p> "{selectedGenreId.names}"</p>
+            <p> "{selectedGenreId.names.join(", ")}"</p>
           </h1>
           <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
             {filterGenre?.results?.map((movie) => {
