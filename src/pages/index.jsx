@@ -9,7 +9,9 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [nowPlayingMovie, setNowPlayingMovie] = useState([]);
   // const [upcomingMovie, setUpcomingMovie] = useState([]);
+  const [loading, setLoading] = useState(false);
   const getNowPlayingMovies = async () => {
+    setLoading(true);
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/movie/now_playing?language=en-US&page=1`,
@@ -22,12 +24,15 @@ export default function Home() {
         }
       );
       const movies = await response.json();
+      setLoading(false);
+      // console.log(loading);
 
       setNowPlayingMovie(movies.results);
     } catch (error) {
       console.log(error);
     }
   };
+
   // const getUpcoming = async () => {
   //   try {
   //     const response = await fetch(

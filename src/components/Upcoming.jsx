@@ -3,17 +3,22 @@ import { useEffect, useState } from "react";
 import { MovieCard } from "./MovieCard";
 import { MoveRight } from "lucide-react";
 import Link from "next/link";
+import { HomePageLoader } from "./HomePageLoader";
 
 export const Upcoming = () => {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getUpcoming = async () => {
+      setLoading(true);
       const response = await getUpcomingMovies();
       setUpcomingMovies(response?.results);
+      setLoading(false);
     };
     getUpcoming();
   }, []);
+  if (!loading) return <HomePageLoader />;
 
   return (
     <div className="mx-auto max-w-[1480px]">
@@ -25,6 +30,7 @@ export const Upcoming = () => {
           </p>
         </Link>
       </div>
+      {loading && <HomePageLoader />}
       <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
         {upcomingMovies.slice(0, 10).map((movie) => {
           return (
