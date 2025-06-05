@@ -9,7 +9,7 @@ export const GenrePage = ({ genreIds, genreId }) => {
 
       <GenrePick genreIds={genreIds} />
 
-      <FooterSection />
+      {/* <FooterSection /> */}
     </div>
   );
 };

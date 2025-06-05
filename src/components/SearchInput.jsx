@@ -51,13 +51,13 @@ export const SearchInput = () => {
         value={query}
         onKeyDown={handleKeyDown}
         onChange={(e) => setQuery(e.target.value)}
-        className="border-8 shadow-lg border-transparent rounded-xl md:pr-40 md:pl-6 relative sm:text-[14px]"
+        className="border-8 shadow-lg border-transparent rounded-xl md:pr-40 md:pl-6 relative sm:text-[14px] w-[130px] sm:w-[400px]"
       />
 
       {loading && <p>Searching</p>}
 
-      {!loading && results.length > 4 && (
-        <div className="absolute z-10 bg-white border rounded-xl sm:w-[600px] w-[100px] ">
+      {!loading && results?.length > 2 && (
+        <div className="absolute z-10 bg-white border rounded-xl sm:w-[600px] w-[300px] left-1 ">
           {results.slice(0, 6).map((movie) => {
             const posterUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.poster_path} `;
             return (
@@ -69,7 +69,7 @@ export const SearchInput = () => {
                       className="w-[67px] h-[100px] rounded-xl cursor-pointer"
                     />
                   </Link>
-                  <div className="w-[577px]">
+                  <div className="sm:w-[577px] w-[200px]">
                     <Link href={`/details/${movie.id}`}>
                       <p className="text-[20px] font-[600] flex cursor-pointer">
                         {movie.title}
@@ -87,7 +87,7 @@ export const SearchInput = () => {
                       </p>
                       <p className="text-[#71717a]">/10</p>
                     </div>
-                    <div className="flex justify-between py-3">
+                    <div className="sm:flex sm:justify-between py-3">
                       <p>{movie.release_date}</p>
                       <Link href={`/details/${movie.id}`}>
                         <div className="flex cursor-pointer text-gray-700 hover:text-blue-500 transition-colors duration-150">

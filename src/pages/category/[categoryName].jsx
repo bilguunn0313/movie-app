@@ -18,12 +18,16 @@ import { FooterSection } from "@/components/FooterSection";
 import { CatPopular } from "@/components/CatPopular";
 import { CatTopRated } from "@/components/CatTopRated";
 import { CatSimiliar } from "@/components/CatSimiliar";
+import { parseAsInteger, useQueryState } from "nuqs";
 
 export default function Page() {
   const router = useRouter();
   const categoryName = router.query.categoryName;
   const [category, setCategory] = useState({});
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useQueryState(
+    "page",
+    parseAsInteger.withDefault(1)
+  );
 
   useEffect(() => {
     if (!categoryName) return;

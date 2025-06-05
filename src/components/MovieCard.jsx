@@ -5,13 +5,13 @@ export const MovieCard = ({ movie, id }) => {
   const imageUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.poster_path}`;
   return (
     <div className="py-4">
-      <div className="sm:mx-10 mx-5 lg:max-w-[1080 px] sm:w-[640px]">
+      <div className="sm:mx-10 ">
         <img
           src={imageUrl}
           alt="card"
           className="max-w-[157px] h-[233.1px] sm:max-w-[229px] md:h-[340px] rounded-md cursor-pointer "
         />
-        <div className=" bg-[#f4f4f5] px-2 py-1 max-w-[157px] h-full rounded-md md:max-w-[229px] md:h-[95px] cursor-pointer">
+        <div className=" bg-[#f4f4f5] px-2 py-1 w-[157px] h-full rounded-md md:w-[229px] md:h-[95px] cursor-pointer">
           <div className="flex gap-1">
             <Star
               color="rgba(253, 224, 71, 1)"

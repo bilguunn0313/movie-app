@@ -9,7 +9,9 @@ export const DetailsHeader = ({ movie }) => {
     <div className="mx-auto lg:w-[1080px] md:w-[768px] sm:w-[640px] ">
       <div className="pt-8 pb-4 justify-between flex px-5  ">
         <div>
-          <h1 className="text-[24px] font-[600]">{movie?.title}</h1>
+          <h1 className="sm:text-[24px] text-[20px] font-[600]">
+            {movie?.title}
+          </h1>
           <div className="flex">
             <p>{movie?.release_date} ·</p>
             <p>PG ·</p>
@@ -28,7 +30,7 @@ export const DetailsHeader = ({ movie }) => {
             />
 
             <div className="flex">
-              <p className="font-[600]">{movie?.vote_average}</p>
+              <p className="font-[600]">{movie?.vote_average?.toFixed(1)}</p>
               <p className="text-[#71717a]">/10</p>
             </div>
           </div>
@@ -47,7 +49,7 @@ export const DetailsHeader = ({ movie }) => {
               alt=""
               className="lg:w-[762px] lg:h-[428px] rounded-2xl relative opacity-90 "
             />
-            <div className=" flex absolute md:top-87 p-[20px]  ">
+            <div className=" flex absolute md:top-87 sm:p-[20px] top-35   ">
               <MovieTrailer movieId={movie.id} />
             </div>
           </div>

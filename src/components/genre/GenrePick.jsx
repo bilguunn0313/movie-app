@@ -58,31 +58,33 @@ export const GenrePick = () => {
     });
   };
 
-  const selectGenre = (id) => {
-    setSelectedGenreId([...selectedGenreId, id]);
-    router.push(`/genre/${id}?selectedGenreId=${id}`);
-  };
+  // const selectGenre = (id) => {
+  //   setSelectedGenreId([...selectedGenreId, id]);
+  //   router.push(`/genre/${id}?selectedGenreId=${id}`);
+  // };
   console.log(filterGenre.results);
   return (
-    <div className="flex">
-      <div className="ml-40">
-        <h1 className="font-[600] text-[30px] mb-8 mt-[52px] px-2 ">
-          Search filter
-        </h1>
-        <div className="mb-5 px-2 ">
-          <h2 className="font-[600] text-[24px] ">Genres</h2>
-          <p className="font-[400] text-[16px] ">
-            See lists of movies by genre
-          </p>
+    <div className="sm:flex">
+      <div className="sm:ml-40">
+        <div className="px-5">
+          <h1 className="font-[600] sm:text-[30px] text-[24px] mb-8 sm:mt-[52px] mt-[32px] sm:px-2 ">
+            Search filter
+          </h1>
+          <div className="mb-5 sm:px-2 ">
+            <h2 className="font-[600] sm:text-[24px] text-[20px] ">Genres</h2>
+            <p className="font-[400] text-[16px] ">
+              See lists of movies by genre
+            </p>
+          </div>
         </div>
         <div>
-          <div className=" w-[500px]  flex-wrap hidden md:flex gap-2 ">
+          <div className=" sm:w-[500px] ml-3  flex-wrap flex sm:gap-2 gap-2 ">
             {showGenre?.map((genre) => (
-              <div className="py-2">
+              <div className="sm:py-2 py-1">
                 <Button
                   key={genre.id}
                   variant={"outline"}
-                  className={`flex rounded-full mx-2 text-[12px] font-[600] cursor-pointer hover:bg-gray-300  ${
+                  className={`flex rounded-full sm:mx-2 text-[12px] font-[600] cursor-pointer hover:bg-gray-300 w-full h-5 sm:h-8 ${
                     selectedGenreId.ids.includes(genre.id)
                       ? "bg-[#18181b] text-white"
                       : "bg-white text-black"
@@ -97,10 +99,10 @@ export const GenrePick = () => {
           </div>
         </div>
       </div>
-      <div className="border-1 max-h-full mt-32 mx-5"></div>
+      <div className="sm:border-1 sm:max-h-full sm:mt-32 sm:mx-5"></div>
       <div className="">
-        <div className="mt-[130px]">
-          <h1 className="font-[600] text-[20px] flex">
+        <div className="sm:mt-[130px] mt-8 ">
+          <h1 className="font-[600] text-[20px] flex mx-5">
             <p> {filterGenre?.total_results} titles in</p>
             <p> "{selectedGenreId.names.join(", ")}"</p>
           </h1>

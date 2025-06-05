@@ -15,7 +15,7 @@ export const Details = ({ movie, id }) => {
       <DetailsMidSection movie={movie} />
       <DetailsDirectors id={movie.id} />
       <DetailsSimiliar movie={movie} id={id} />
-      <FooterSection />
+      {/* <FooterSection /> */}
     </div>
   );
 };

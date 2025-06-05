@@ -11,10 +11,10 @@ export const MovieCarouselItem = ({ movie, id }) => {
         <img
           src={imgUrl}
           alt="head"
-          className="lg:relative w-screen lg:h-[976px] "
+          className="sm:relative  sm:mx-auto w-full md:mx-auto md:w-[1440px] "
         />
       </Link>
-      <div className=" lg:absolute top-70 left-20 lg:text-white lg:w-[340px] ">
+      <div className=" lg:absolute top-90 left-120 lg:text-white lg:w-[340px] sm:mx-auto ">
         <div className="flex justify-between px-5 py-4 md:flex-col md:text-[12px]">
           <div>
             <p className="text-sm">Now playing:</p>

@@ -11,9 +11,9 @@ import { AnimatePresence, motion } from "framer-motion";
 export const HeaderSection = ({ query }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="flex justify-between  md:mx-auto md:w-[1080px] ">
+    <div className="flex justify-between  md:mx-auto  ">
       <Link href={`/`}>
-        <div className="flex gap-2 py-4 px-5 pt-6.5">
+        <div className="flex gap-2 py-4 lg:px-5 pt-6.5">
           <Film className="text-indigo-700" />
           <p className="text-indigo-700">Movie Z</p>
         </div>
@@ -36,7 +36,7 @@ export const HeaderSection = ({ query }) => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ x: 110, opacity: 0 }}
+              initial={{ x: 40, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -200, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -52,7 +52,7 @@ export const HeaderSection = ({ query }) => {
         {/* <button className="mx-2 border-8 shadow-lg border-transparent rounded-xl my-5 ">
           <Moon className="w-4 h-4  " />
         </button> */}
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center sm:space-x-2">
           <Switch id="airplane-mode" />
           <Label htmlFor="airplane-mode" className="hidden md:flex">
             Dark Mode

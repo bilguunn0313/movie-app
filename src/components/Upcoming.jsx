@@ -18,11 +18,11 @@ export const Upcoming = () => {
     };
     getUpcoming();
   }, []);
-  if (!loading) return <HomePageLoader />;
+  // if (!loading) return <HomePageLoader />;
 
   return (
     <div className="mx-auto max-w-[1480px]">
-      <div className="flex py-5 px-4 justify-between">
+      <div className="flex sm:py-5 px-4 justify-between">
         <p className="font-extrabold text-[24px]">Upcoming</p>
         <Link href={`/category/CatUpcoming`}>
           <p className="flex gap-3 cursor-pointer text-gray-500 hover:text-blue-700 transition-colors duration-200 ">
