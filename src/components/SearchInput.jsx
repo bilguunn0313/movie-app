@@ -51,13 +51,13 @@ export const SearchInput = () => {
         value={query}
         onKeyDown={handleKeyDown}
         onChange={(e) => setQuery(e.target.value)}
-        className="border-8 shadow-lg border-transparent rounded-xl md:pr-40 md:pl-6 relative sm:text-[14px] w-[130px] sm:w-[400px]"
+        className="border-8 shadow-lg border-transparent rounded-xl md:pr-40 md:pl-6 relative sm:text-[14px] w-[160px]  sm:w-[400px]"
       />
 
       {loading && <p>Searching</p>}
 
       {!loading && results?.length > 2 && (
-        <div className="absolute z-10 bg-white border rounded-xl sm:w-[600px] w-[300px] left-1 ">
+        <div className="absolute sm:left-210 z-10 bg-white border rounded-xl sm:w-[600px] w-[300px]  ">
           {results.slice(0, 6).map((movie) => {
             const posterUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.poster_path} `;
             return (

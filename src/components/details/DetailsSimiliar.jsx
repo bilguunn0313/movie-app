@@ -42,8 +42,8 @@ export const DetailsSimiliar = ({ movie, id }) => {
       <div className="md:grid md:grid-cols-3  lg:grid lg:grid-cols-5 hidden grid-cols-2 ">
         {similiar.slice(0, 5).map((movie) => {
           return (
-            <Link href={`/details/${movie.id}`}>
-              <MovieCard key={movie.id} movie={movie} id={movie.id} />
+            <Link href={`/details/${movie.id}`} key={movie.id}>
+              <MovieCard movie={movie} />
             </Link>
           );
         })}
@@ -51,13 +51,8 @@ export const DetailsSimiliar = ({ movie, id }) => {
       <div className="grid grid-cols-2 md:hidden ">
         {similiar.slice(0, 4).map((movie) => {
           return (
-            <Link href={`/details/${movie.id}`}>
-              <MovieCard
-                key={movie.id}
-                movie={movie}
-                id={movie.id}
-                className="w-[150px]"
-              />
+            <Link href={`/details/${movie.id}`} key={movie.id}>
+              <MovieCard movie={movie} id={movie.id} className="w-[150px]" />
             </Link>
           );
         })}

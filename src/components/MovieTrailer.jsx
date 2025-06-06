@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
 import { Play } from "lucide-react";
 
 import { useEffect, useState } from "react";
@@ -47,6 +48,11 @@ export const MovieTrailer = ({ movieId }) => {
         </DialogTrigger>
         <DialogContent className="min-w-fit bg-transparent border-none mx-auto">
           <div className="w-[996px] h-[561px] ">
+            <DialogTitle>Trailer</DialogTitle>
+            <DialogDescription>
+              Энэ бол тайлбар юм. Диалог юу хийхийг хэрэглэгчид ойлгуулахад
+              тусална.
+            </DialogDescription>
             <YouTube
               className="w-full h-full"
               videoId={movieTrailer?.key}

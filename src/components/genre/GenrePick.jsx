@@ -80,9 +80,8 @@ export const GenrePick = () => {
         <div>
           <div className=" sm:w-[500px] ml-3  flex-wrap flex sm:gap-2 gap-2 ">
             {showGenre?.map((genre) => (
-              <div className="sm:py-2 py-1">
+              <div className="sm:py-2 py-1" key={genre.id}>
                 <Button
-                  key={genre.id}
                   variant={"outline"}
                   className={`flex rounded-full sm:mx-2 text-[12px] font-[600] cursor-pointer hover:bg-gray-300 w-full h-5 sm:h-8 ${
                     selectedGenreId.ids.includes(genre.id)
@@ -109,8 +108,8 @@ export const GenrePick = () => {
           <div className="md:grid md:grid-cols-3 sm:grid-cols-2 sm:grid lg:grid lg:grid-cols-5 grid grid-cols-2 ">
             {filterGenre?.results?.map((movie) => {
               return (
-                <Link href={`/details/${movie.id}`}>
-                  <MovieCard key={movie.id} movie={movie} />
+                <Link href={`/details/${movie.id}`} key={movie.id}>
+                  <MovieCard movie={movie} />
                 </Link>
               );
             })}

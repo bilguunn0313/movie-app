@@ -15,12 +15,8 @@ export const DetailsMidSection = ({ movie }) => {
       <div className="mx-auto  pb-10 lg:w-[1100px] md:w-[800px]">
         <div className="pb-5 w-[301px] md:w-[800px]">
           {movie.genres?.map((genre) => (
-            <Link href={`/genre/${genre.id}`}>
-              <Button
-                key={genre.id}
-                variant="outline"
-                className="rounded-full sm:mx-2 mx-1"
-              >
+            <Link href={`/genre/${genre.id}`} key={genre.id}>
+              <Button variant="outline" className="rounded-full sm:mx-2 mx-1">
                 {genre.name}
               </Button>
             </Link>

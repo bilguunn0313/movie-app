@@ -44,10 +44,10 @@ export default function Page() {
   return (
     <div>
       <HeaderSection />
-      {(categoryName === "CatUpcoming" && <CatUpcoming data={category} />) ||
+      {/* {(categoryName === "CatUpcoming" && <CatUpcoming data={category} />) ||
         (categoryName === "CatTopRated" && <CatTopRated data={category} />) ||
         (categoryName === "CatPopular" && <CatPopular data={category} />) ||
-        (categoryName === "CatSimiliar" && <CatSimiliar data={category} />)}
+        (categoryName === "CatSimiliar" && <CatSimiliar data={category} />)} */}
       <Pagination>
         <PaginationContent>
           <PaginationItem>

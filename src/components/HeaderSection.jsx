@@ -7,24 +7,34 @@ import { Switch } from "@/components/ui/switch";
 import { SearchInput } from "./SearchInput";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ModeToggle } from "./ModeToggle";
 
 export const HeaderSection = ({ query }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="flex justify-between  md:mx-auto  ">
+    <div className="flex justify-between  md:mx-auto md:w-[1000px]  ">
       <Link href={`/`}>
-        <div className="flex gap-2 py-4 lg:px-5 pt-6.5">
-          <Film className="text-indigo-700" />
-          <p className="text-indigo-700">Movie Z</p>
-        </div>
+        {!isOpen && (
+          <div className="flex gap-2 py-4 lg:px-5 pt-6.5">
+            <Film className="text-indigo-700" />
+            <p className="text-indigo-700">Movie Z</p>
+          </div>
+        )}
       </Link>
-      <div className="py-4 hidden md:flex gap-4">
-        <HeaderGenre />
-
-        <div className="hidden md:flex">
-          <SearchInput query={query} />
+      {isOpen && (
+        <div className="flex pr-52 py-4 sm:hidden">
+          <HeaderGenre />
         </div>
-      </div>
+      )}
+      {!isOpen && (
+        <div className="py-4 hidden md:flex gap-4">
+          <HeaderGenre />
+
+          <div className="hidden md:flex">
+            <SearchInput query={query} />
+          </div>
+        </div>
+      )}
       <div className="flex">
         <button
           className="mx-2 border-8 shadow-lg border-transparent rounded-xl my-5 block lg:hidden"
@@ -48,16 +58,11 @@ export const HeaderSection = ({ query }) => {
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* <button className="mx-2 border-8 shadow-lg border-transparent rounded-xl my-5 ">
-          <Moon className="w-4 h-4  " />
-        </button> */}
-        <div className="flex items-center sm:space-x-2">
-          <Switch id="airplane-mode" />
-          <Label htmlFor="airplane-mode" className="hidden md:flex">
-            Dark Mode
-          </Label>
-        </div>
+        {!isOpen && (
+          <div className="flex items-center sm:space-x-2">
+            <ModeToggle />
+          </div>
+        )}
       </div>
     </div>
   );

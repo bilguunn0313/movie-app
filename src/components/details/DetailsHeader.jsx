@@ -1,5 +1,5 @@
 import { Play, Star, X } from "lucide-react";
-import { MovieTrailer } from "../MovieTrailer";
+import { MovieTrailer } from "../movieTrailer";
 
 export const DetailsHeader = ({ movie }) => {
   const imgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie?.poster_path}`;

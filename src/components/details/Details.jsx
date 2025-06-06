@@ -1,6 +1,5 @@
 import { FooterSection } from "../FooterSection";
 import { HeaderSection } from "../HeaderSection";
-import { MovieTrailer } from "../movieTrailer";
 import { DetailsDirectors } from "./DetailsDirectors";
 import { DetailsHeader } from "./DetailsHeader";
 import { DetailsMidSection } from "./DetailsMidSection";

@@ -28,8 +28,8 @@ export const PopularMovie = () => {
       <div className="md:grid md:grid-cols-3 grid grid-cols-2 sm:grid lg:grid lg:grid-cols-5  ">
         {popularMovies.slice(0, 10).map((movie) => {
           return (
-            <Link href={`/details/${movie.id}`}>
-              <MovieCard key={movie.id} movie={movie} id={movie.id} />
+            <Link href={`/details/${movie.id}`} key={movie.id}>
+              <MovieCard movie={movie} />
             </Link>
           );
         })}

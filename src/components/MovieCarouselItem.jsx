@@ -1,7 +1,7 @@
 import { Play, Star } from "lucide-react";
 import Link from "next/link";
 
-import { MovieTrailer } from "./MovieTrailer";
+import { MovieTrailer } from "./movieTrailer";
 
 export const MovieCarouselItem = ({ movie, id }) => {
   const imgUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}${movie.backdrop_path}`;
@@ -11,7 +11,7 @@ export const MovieCarouselItem = ({ movie, id }) => {
         <img
           src={imgUrl}
           alt="head"
-          className="sm:relative  sm:mx-auto w-full md:mx-auto md:w-[1440px] "
+          className="sm:relative  sm:mx-auto w-full md:mx-auto md:w-[1600px]  "
         />
       </Link>
       <div className=" lg:absolute top-90 left-120 lg:text-white lg:w-[340px] sm:mx-auto ">
